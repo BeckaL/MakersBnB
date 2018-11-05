@@ -1,4 +1,14 @@
 <p>Welcome to MakersBnB: <%= @user %></p>
+
+<% if @user %>
 <form action="/sign_out" method="post">
   <input type = "submit" name="sign out" value = "sign out">
 </form>
+<% else %>
+<form action="/sign_up" method="get">
+  <input type = "submit" name="sign up" value = "sign up">
+</form>
+<% end %>
+<!-- <form action="/sign_out" method="post">
+  <input type = "submit" name="sign out" value = "sign out">
+</form> -->
