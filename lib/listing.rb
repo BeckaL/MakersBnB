@@ -22,6 +22,20 @@ class Listing
     Listing.new(listing_id: listing_id, user_id: user_id, name: name, description: description, price: price)
   end
 
+  def self.all
+    result = connection.exec("SELECT * FROM listings")
+    array = []
+    result.map do |listing|
+      Listing.new(
+        listing_id: listing['listing_id'].to_i,
+        user_id: listing['user_id'].to_i,
+        name: listing['name'],
+        description: listing['description'],
+        price: listing['price'].to_f
+      )
+    end
+  end
+
   private
   def self.connection
     if ENV['RACK_ENV'] == 'test'
