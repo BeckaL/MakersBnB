@@ -8,12 +8,12 @@ require 'simplecov'
 require 'simplecov-console'
 require 'capybara'
 require 'rspec'
-require './app'
+# require './app'
 
-require File.join(File.dirname(__FILE__), '..', 'app.rb')
+# require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
 ENV['RACK_ENV'] = 'test'
-Capybara.app = MakersBnB
+# Capybara.app = MakersBnB
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
   [
@@ -22,13 +22,13 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
 )
 SimpleCov.start
 #
-# RSpec.configure do |config|
-#   config.before(:each) do
-#     connection = PG.connect(dbname: 'chitter_test')
-#     connection.exec("TRUNCATE peeps, users;")
-#     connection.close
-#   end
-# end
+RSpec.configure do |config|
+  config.before(:each) do
+    connection = PG.connect(dbname: 'makers_bnb_test')
+    connection.exec("TRUNCATE listings, users;")
+    connection.close
+  end
+end
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
