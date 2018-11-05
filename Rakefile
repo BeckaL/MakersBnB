@@ -1,20 +1,5 @@
 require 'pg'
 
-task :test_database_setup do
-  p "Cleaning database..."
-
-  connection = PG.connect(dbname: 'makers_bnb_test')
-
-  # Clear the database
-  connection.exec("TRUNCATE listings;")
-  connection.exec("TRUNCATE users;")
-
-  # Add the test data
-  # connection.exec("INSERT INTO links VALUES(1, 'http://www.makersacademy.com');")
-  # connection.exec("INSERT INTO links VALUES(2, 'http://www.google.com');")
-  # connection.exec("INSERT INTO links VALUES(3, 'http://www.facebook.com');")
-end
-
 task :setup do
   p "Creating databases..."
 

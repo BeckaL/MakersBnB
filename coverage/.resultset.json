@@ -1,40 +1,68 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/anouskahopkins/Makers/Week_6/MakersBnB/spec/listing_spec.rb": [
+      "/Users/Henry/Code/Makers/Projects/MakersBnB/spec/listing_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        2,
+        null,
+        1,
+        1,
         1,
         null,
         1,
         null,
         1,
-        null,
-        1,
-        1,
         1,
         1,
         1,
         1,
         null,
         null,
+        null,
+        1,
         null,
         null,
         null
       ],
-      "/Users/anouskahopkins/Makers/Week_6/MakersBnB/lib/listing.rb": [
+      "/Users/Henry/Code/Makers/Projects/MakersBnB/lib/listing.rb": [
         1,
         null,
         1,
         null,
         1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        null,
+        null,
+        1,
+        1,
+        null,
         1,
         1,
         1,
         1,
+        1,
+        null,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        0,
         null,
         null,
         null
       ]
     },
-    "timestamp": 1541428220
+    "timestamp": 1541432251
   }
 }
