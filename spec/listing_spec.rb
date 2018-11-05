@@ -2,8 +2,6 @@ require 'listing'
 
 describe Listing do
 
-  describe '.create' do
-
     it 'should create a listing with user id, name, description and price' do
       listing = Listing.new(user_id: 123, name: 'listing 1', description: 'big house', price: 100)
       expect(listing.user_id).to eq 123
