@@ -15,7 +15,7 @@ require './app'
 
 #
 ENV['RACK_ENV'] = 'test'
-# Capybara.app = MakersBnB
+Capybara.app = MakersBnB
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
   [

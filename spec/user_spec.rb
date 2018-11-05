@@ -11,7 +11,7 @@ describe 'user' do
   end
 
   it "add another user" do
-    expect(User.all).to eq ["fakeemail@hotmail.com", "jamesbond@gmail.com"]
+    expect(User.all).to eq ["test@test.com", "fakeemail@hotmail.com", "jamesbond@gmail.com"]
   end
 
   it "add returns the users email" do
