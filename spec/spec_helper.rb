@@ -8,12 +8,12 @@ require 'simplecov'
 require 'simplecov-console'
 require 'capybara'
 require 'rspec'
-# require './app'
+require './app'
 
 # require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
 ENV['RACK_ENV'] = 'test'
-# Capybara.app = MakersBnB
+Capybara.app = MakersBnB
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
   [
