@@ -4,9 +4,9 @@ class User
 
   def self.add(email:, password:)
     connection = connect_to_database
-    connection.exec("INSERT INTO users (email, password) VALUES('#{email}', '#{password}')
-    RETURNING user_id, email, password")
-     return email
+    connection.exec("INSERT INTO users (email, password) VALUES('#{email}',
+    '#{password}') RETURNING user_id, email, password")
+    return email
   end
 
   def self.all
@@ -15,9 +15,9 @@ class User
     data.map { |user| user['email'] }
   end
 
-  private
   def self.connect_to_database
     return PG.connect :dbname => "makers_bnb_test" if ENV['RACK_ENV'] == "test"
+
     return PG.connect :dbname => "makers_bnb"
   end
 
