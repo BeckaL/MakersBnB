@@ -8,12 +8,14 @@ require 'simplecov'
 require 'simplecov-console'
 require 'capybara'
 require 'rspec'
+require 'rake'
 require './app'
 
 # require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
+#
 ENV['RACK_ENV'] = 'test'
-Capybara.app = MakersBnB
+# Capybara.app = MakersBnB
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
   [
@@ -25,8 +27,13 @@ SimpleCov.start
 RSpec.configure do |config|
   config.before(:each) do
     connection = PG.connect(dbname: 'makers_bnb_test')
+
+    # Clear the database
     connection.exec("TRUNCATE listings, users;")
-    connection.close
+
+
+    # Add the test data
+    connection.exec("INSERT INTO users (email, password) VALUES('test@test.com', 'password');")
   end
 end
 
