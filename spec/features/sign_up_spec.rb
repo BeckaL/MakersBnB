@@ -12,7 +12,6 @@ feature do
     fill_in 'password', with: "fakepassword"
     click_button 'submit'
     expect(page).to have_content "Welcome to MakersBnB: fakeemail@mail.com"
-
   end
 
 end

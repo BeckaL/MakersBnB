@@ -21,6 +21,11 @@ class MakersBnB < Sinatra::Base
     redirect('/')
   end
 
+  post '/sign_out' do
+    session[:current_user] = nil
+    redirect '/'
+  end
+
   run! if app_file == $0
 
 end
