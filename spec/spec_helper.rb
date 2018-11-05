@@ -29,7 +29,6 @@ RSpec.configure do |config|
 end
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-  SimpleCov::Formatter::Console,
-  SimpleCov::Formatter::HTMLFormatter
+  SimpleCov::Formatter::Console
 ])
 SimpleCov.start
