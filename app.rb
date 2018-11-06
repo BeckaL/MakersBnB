@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require './user'
+require './lib/listing'
 
 class MakersBnB < Sinatra::Base
   enable :sessions
@@ -24,6 +25,23 @@ class MakersBnB < Sinatra::Base
   post '/sign_out' do
     session[:current_user] = nil
     redirect '/'
+  end
+
+  get '/new_listing' do
+    erb :new_listing
+  end
+
+  post '/new_listing' do
+    name = params["name"]
+    description = params["description"]
+    price = params["price"]
+    Listing.create(name: name, description: description, price: price)
+    redirect('/listings')
+  end
+
+  get '/listings' do
+    @listings = Listing.all
+    erb :listings
   end
 
   run! if app_file == $0
