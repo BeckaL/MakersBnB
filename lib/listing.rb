@@ -29,7 +29,7 @@ class Listing
     description_string = CGI.escape(description)
     price.gsub!(/[£$]/, "")
 
-    result = DatabaseConnection.query("INSERT INTO listings(user_id, name, description, price) VALUES ((SELECT user_id FROM users WHERE email = '#{user}'),'#{name}','#{description}','#{price}') RETURNING listing_id, user_id, name, description, price")
+    result = DatabaseConnection.query("INSERT INTO listings(user_id, name, description, price) VALUES ((SELECT user_id FROM users WHERE email = '#{user}'),'#{name_string}','#{description_string}','#{price}') RETURNING listing_id, user_id, name, description, price")
 
     listing_id = result.first["listing_id"].to_i
     user_id = result.first["user_id"].to_i
