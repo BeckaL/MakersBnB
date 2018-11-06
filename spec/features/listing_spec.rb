@@ -5,7 +5,7 @@ feature do
     fill_in 'email', with: "fakeemail@mail.com"
     fill_in 'password', with: "fakepassword"
     click_button 'submit'
-    visit '/new_listing'
+    click_button 'create new listing'
   end
 
   it 'has a new listing page' do
@@ -27,7 +27,7 @@ feature do
     fill_in 'description', with: "Ostentatiously big house"
     fill_in 'price', with: '1000'
     click_button 'submit'
-    visit '/new_listing'
+    click_button 'create new listing'
     fill_in 'name', with: "An MP's second home"
     fill_in 'description', with: "Happily bought on taxpayer dollar"
     fill_in 'price', with: '5000'
