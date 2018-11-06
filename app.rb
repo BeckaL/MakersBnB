@@ -32,10 +32,11 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/new_listing' do
+    user = session[:current_user]
     name = params["name"]
     description = params["description"]
     price = params["price"]
-    Listing.create(name: name, description: description, price: price)
+    Listing.create(user: user, name: name, description: description, price: price)
     redirect('/listings')
   end
 

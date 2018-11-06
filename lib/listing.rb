@@ -10,8 +10,15 @@ class Listing
     @price = price
   end
 
-  def self.create(name:, description:, price:)
-    result = connection.exec("INSERT INTO listings(user_id, name, description, price) VALUES ((SELECT user_id FROM users WHERE email = 'test@test.com'),'#{name}','#{description}','#{price}') RETURNING listing_id, user_id, name, description, price")
+  def self.create(user:, name:, description:, price:)
+    # cleaning the user input to avoid some SQL problems,
+    # remember to URI.unescape when reading back from
+    # the database!
+    name_string = CGI.escape(name)
+    description_string = CGI.escape(description)
+    price_string = price.gsub!(/[£$]/, "")
+
+    result = connection.exec("INSERT INTO listings(user_id, name, description, price) VALUES ((SELECT user_id FROM users WHERE email = '#{user}'),'#{name_string}','#{description_string}','#{price_string}') RETURNING listing_id, user_id, name, description, price")
 
     listing_id = result.first["listing_id"].to_i
     user_id = result.first["user_id"].to_i
@@ -24,13 +31,12 @@ class Listing
 
   def self.all
     result = connection.exec("SELECT * FROM listings")
-    array = []
     result.map do |listing|
       Listing.new(
         listing_id: listing['listing_id'].to_i,
         user_id: listing['user_id'].to_i,
-        name: listing['name'],
-        description: listing['description'],
+        name: CGI.unescape(listing['name']),
+        description: CGI.unescape(listing['description']),
         price: listing['price'].to_f
       )
     end
