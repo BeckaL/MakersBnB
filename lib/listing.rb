@@ -10,8 +10,26 @@ class Listing
     @price = price
   end
 
-  def self.create(name:, description:, price:)
-    result = DatabaseConnection.query("INSERT INTO listings(user_id, name, description, price) VALUES ((SELECT user_id FROM users WHERE email = 'test@test.com'),'#{name}','#{description}','#{price}') RETURNING listing_id, user_id, name, description, price")
+  def self.find_by_id(listing_id:)
+    listings = Listing.all
+    @found_listing = nil
+    listings.each do |listing|
+      if listing.listing_id == listing_id.to_i
+        @found_listing = listing
+      end
+    end
+    @found_listing
+  end
+
+  def self.create(user:, name:, description:, price:)
+    # cleaning the user input to avoid some SQL problems,
+    # remember to URI.unescape when reading back from
+    # the database!
+    name_string = CGI.escape(name)
+    description_string = CGI.escape(description)
+    price.gsub!(/[£$]/, "")
+
+    result = DatabaseConnection.query("INSERT INTO listings(user_id, name, description, price) VALUES ((SELECT user_id FROM users WHERE email = '#{user}'),'#{name}','#{description}','#{price}') RETURNING listing_id, user_id, name, description, price")
 
     listing_id = result.first["listing_id"].to_i
     user_id = result.first["user_id"].to_i
@@ -24,13 +42,14 @@ class Listing
 
   def self.all
     result = DatabaseConnection.query("SELECT * FROM listings")
-    array = []
     result.map do |listing|
+      name = CGI.unescape(listing['name'])
+      description = CGI.unescape(listing['description'])
       Listing.new(
         listing_id: listing['listing_id'].to_i,
         user_id: listing['user_id'].to_i,
-        name: listing['name'],
-        description: listing['description'],
+        name: name,
+        description: description,
         price: listing['price'].to_f
       )
     end
