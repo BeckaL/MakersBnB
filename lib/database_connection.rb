@@ -2,12 +2,9 @@ require 'pg'
 
 class DatabaseConnection
 
-  def self.setup(dbname:)
-    @connection = PG.connect(dbname: dbname)
-  end
-
-  def self.connection
-    @connection
+  def self.setup
+    return @connection = PG.connect(dbname: "makers_bnb_test") if ENV['RACK_ENV'] == "test"
+    return @connection = PG.connect(dbname: "makers_bnb")
   end
 
   def self.query(sql)

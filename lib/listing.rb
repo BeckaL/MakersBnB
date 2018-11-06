@@ -24,6 +24,7 @@ class Listing
   end
 
   def self.create(user:, name:, description:, price:)
+    DatabaseConnection.setup
     # cleaning the user input to avoid some SQL problems,
     # remember to CGI.unescape when reading back from
     # the database in self.all
@@ -43,6 +44,7 @@ class Listing
   end
 
   def self.all
+    DatabaseConnection.setup
     result = DatabaseConnection.query("SELECT * FROM listings")
     result.map do |listing|
       name = CGI.unescape(listing['name'])
