@@ -10,6 +10,17 @@ class Listing
     @price = price
   end
 
+  def self.find_by_id(listing_id:)
+    listings = Listing.all
+    @found_listing = nil
+    listings.each do |listing|
+      if listing.listing_id == listing_id.to_i
+        @found_listing = listing
+      end
+    end
+    @found_listing
+  end
+
   def self.create(user:, name:, description:, price:)
     # cleaning the user input to avoid some SQL problems,
     # remember to URI.unescape when reading back from
