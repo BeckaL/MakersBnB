@@ -9,8 +9,8 @@ describe Listing do
 
       expect(result[0]['listing_id'].to_i).to be_a Integer
       expect(result[0]['user_id'].to_i).to be_a Integer
-      expect(result[0]['name']).to eq 'listing 1'
-      expect(result[0]['description']).to eq 'big house'
+      expect(result[0]['name']).to eq 'listing+1'
+      expect(result[0]['description']).to eq 'big+house'
       expect(result[0]['price'].to_f).to eq 100
     end
 
