@@ -23,7 +23,7 @@ class Listing
 
   def self.create(user:, name:, description:, price:)
     # cleaning the user input to avoid some SQL problems,
-    # remember to URI.unescape when reading back from
+    # remember to CGI.unescape when reading back from
     # the database!
     name_string = CGI.escape(name)
     description_string = CGI.escape(description)
