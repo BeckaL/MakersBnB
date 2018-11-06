@@ -1,0 +1,17 @@
+body {
+  font-family: 'Gill Sans', sans-serif;
+  text-align: center;
+}
+
+#logo-title {
+  color: #fc5c63;
+  font-size: xx-large;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
