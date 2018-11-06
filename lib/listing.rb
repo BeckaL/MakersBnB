@@ -1,3 +1,5 @@
+require './lib/database_connection'
+
 class Listing
 
   attr_reader :listing_id, :user_id, :name, :description, :price
@@ -24,7 +26,7 @@ class Listing
   def self.create(user:, name:, description:, price:)
     # cleaning the user input to avoid some SQL problems,
     # remember to CGI.unescape when reading back from
-    # the database!
+    # the database in self.all
     name_string = CGI.escape(name)
     description_string = CGI.escape(description)
     price.gsub!(/[£$]/, "")
@@ -52,15 +54,6 @@ class Listing
         description: description,
         price: listing['price'].to_f
       )
-    end
-  end
-
-  # private
-  def self.connection
-    if ENV['RACK_ENV'] == 'test'
-      DatabaseConnection.setup(dbname: 'makers_bnb_test')
-    else
-      DatabaseConnection.setup(dbname: 'makers_bnb')
     end
   end
 end

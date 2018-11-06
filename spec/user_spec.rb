@@ -1,4 +1,4 @@
-require './user'
+require 'user'
 
 describe 'user' do
   before do

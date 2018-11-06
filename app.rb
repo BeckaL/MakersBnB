@@ -1,11 +1,9 @@
 require 'sinatra/base'
-require './user'
+require './lib/user'
 require './lib/listing'
 
 class MakersBnB < Sinatra::Base
   enable :sessions
-
-
 
   get '/' do
     @user = session[:current_user]
