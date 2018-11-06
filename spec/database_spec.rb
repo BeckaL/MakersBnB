@@ -7,4 +7,12 @@ describe DatabaseConnection do
       DatabaseConnection.setup('makers_bnb_test')
     end
   end
+
+  describe '.connection' do
+    it 'connection should persist' do
+      connection = DatabaseConnection.setup('makers_bnb_test')
+      expect(DatabaseConnection.connection).to eq connection
+    end
+  end
+  
 end
