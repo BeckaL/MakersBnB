@@ -10,6 +10,7 @@ require 'capybara'
 require 'rspec'
 require 'rake'
 require './app'
+require './spec/features/web_helpers'
 
 ENV['RACK_ENV'] = 'test'
 
