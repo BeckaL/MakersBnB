@@ -11,7 +11,7 @@ class Listing
   end
 
   def self.create(name:, description:, price:)
-    result = connection.exec("INSERT INTO listings(user_id, name, description, price) VALUES ((SELECT user_id FROM users WHERE email = 'test@test.com'),'#{name}','#{description}','#{price}') RETURNING listing_id, user_id, name, description, price")
+    result = DatabaseConnection.query("INSERT INTO listings(user_id, name, description, price) VALUES ((SELECT user_id FROM users WHERE email = 'test@test.com'),'#{name}','#{description}','#{price}') RETURNING listing_id, user_id, name, description, price")
 
     listing_id = result.first["listing_id"].to_i
     user_id = result.first["user_id"].to_i
@@ -23,7 +23,7 @@ class Listing
   end
 
   def self.all
-    result = connection.exec("SELECT * FROM listings")
+    result = DatabaseConnection.query("SELECT * FROM listings")
     array = []
     result.map do |listing|
       Listing.new(
@@ -36,12 +36,12 @@ class Listing
     end
   end
 
-  private
+  # private
   def self.connection
     if ENV['RACK_ENV'] == 'test'
-      PG.connect(dbname: 'makers_bnb_test')
+      DatabaseConnection.setup(dbname: 'makers_bnb_test')
     else
-      PG.connect(dbname: 'makers_bnb')
+      DatabaseConnection.setup(dbname: 'makers_bnb')
     end
   end
 end
