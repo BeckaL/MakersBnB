@@ -29,4 +29,18 @@ feature do
     expect(page).not_to have_button 'sign up'
 
   end
+
+  it "does not sign up a user if email is already taken" do
+    visit '/sign_up'
+    fill_in 'email', with: "fakeemail@mail.com"
+    fill_in 'password', with: "fakepassword"
+    click_button 'submit'
+    click_button 'sign out'
+    visit '/sign_up'
+    fill_in 'email', with: "fakeemail@mail.com"
+    fill_in 'password', with: "fakepassword"
+    click_button 'submit'
+    expect(page).to have_field 'email'
+  end
+
 end
