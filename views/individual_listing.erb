@@ -3,6 +3,8 @@
 <%= @listing.name %>
 <%= @listing.description %>
 <%= @listing.price %>
-<%= @listing.dates[0] %>
+<% @listing.dates.each do |date| %>
+  <%= date %>
+<% end %>
 
 <a href="/listings/<%= @listing.listing_id  %>/book">request to book</a>

@@ -60,7 +60,7 @@ class MakersBnB < Sinatra::Base
     name = params["name"]
     description = params["description"]
     price = params["price"]
-    dates = [params["dates"]]
+    dates = params["dates"].split("\r\n")
     Listing.create(user: user, name: name, description: description, price: price, dates: dates)
     redirect('/listings')
   end
