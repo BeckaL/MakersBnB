@@ -4,7 +4,7 @@ feature do
     visit'/sign_up'
     fill_in 'email', with: "fakeemail@mail.com"
     fill_in 'password', with: "fakepassword"
-    click_button 'submit'
+    click_button 'sign up'
   end
 
   it 'has a sign out button' do

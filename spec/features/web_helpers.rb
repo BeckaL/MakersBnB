@@ -2,7 +2,7 @@ def sign_up_generic_user
   visit '/sign_up'
   fill_in 'email', with: "fakeemail@mail.com"
   fill_in 'password', with: "fakepassword"
-  click_button 'submit'
+  click_button 'sign up'
 end
 
 def create_new_generic_listing

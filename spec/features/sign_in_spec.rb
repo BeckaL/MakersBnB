@@ -9,7 +9,7 @@ feature do
     click_button('log in')
     fill_in 'email', with: "fakeemail@mail.com"
     fill_in 'password', with: "fakepassword"
-    click_button('submit')
+    click_button('log in')
     expect(page).to have_content "Welcome to MakersBnB: fakeemail@mail.com"
   end
 
@@ -17,7 +17,7 @@ feature do
     click_button('log in')
     fill_in 'email', with: "fakeemail@mail.com"
     fill_in 'password', with: "fakepasswor"
-    click_button('submit')
+    click_button('log in')
     expect(page).to have_content 'email or password is incorrect'
   end
 
@@ -25,7 +25,7 @@ feature do
     click_button('log in')
     fill_in 'email', with: "fakeemil@mail.com"
     fill_in 'password', with: "fakepassword"
-    click_button('submit')
+    click_button('log in')
     expect(page).to have_content 'email or password is incorrect'
   end
 

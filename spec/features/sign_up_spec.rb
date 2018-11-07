@@ -3,14 +3,14 @@ feature do
     visit '/sign_up'
     expect(page).to have_field "email"
     expect(page).to have_field "password"
-    expect(page).to have_button "submit"
+    expect(page).to have_button "sign up"
   end
 
   it "signs up a user" do
     visit '/sign_up'
     fill_in 'email', with: "fakeemail@mail.com"
     fill_in 'password', with: "fakepassword"
-    click_button 'submit'
+    click_button 'sign up'
     expect(page).to have_content "Welcome to MakersBnB: fakeemail@mail.com"
   end
 
@@ -24,7 +24,7 @@ feature do
     visit '/sign_up'
     fill_in 'email', with: "fakeemail@mail.com"
     fill_in 'password', with: "fakepassword"
-    click_button 'submit'
+    click_button 'sign up'
     expect(page).to have_button 'sign out'
     expect(page).not_to have_button 'sign up'
 
@@ -34,12 +34,12 @@ feature do
     visit '/sign_up'
     fill_in 'email', with: "fakeemail@mail.com"
     fill_in 'password', with: "fakepassword"
-    click_button 'submit'
+    click_button 'sign up'
     click_button 'sign out'
     visit '/sign_up'
     fill_in 'email', with: "fakeemail@mail.com"
     fill_in 'password', with: "fakepassword"
-    click_button 'submit'
+    click_button 'sign up'
     expect(page).to have_content 'email is already taken!'
   end
 
