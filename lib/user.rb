@@ -19,13 +19,9 @@ class User
 
   def self.sign_in(email:, password:)
     DatabaseConnection.setup
-
     data = DatabaseConnection.query("SELECT password FROM users WHERE email = '#{email}'").first
-    if data == nil
-      return false
-    else
-      data['password'] == password
-    end
+    return false if data == nil
+    data['password'] == password
   end
 
 end
