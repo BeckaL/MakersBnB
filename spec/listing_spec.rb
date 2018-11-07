@@ -29,4 +29,12 @@ describe Listing do
       expect(Listing.all[0].dates).to eq ['2019-01-01', '2019-01-05']
     end
   end
+
+  describe '.dates' do
+    it 'should return available dates for specific listing' do
+      listing = Listing.create(user: 'test@test.com', name: 'listing 1', description: 'big house', price: '100', dates: ['2019-01-01', '2019-01-05'])
+      expect(Listing.dates(listing_id: listing.listing_id)).to eq ['2019-01-01', '2019-01-05']
+    end
+  end
+
 end

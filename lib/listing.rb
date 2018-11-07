@@ -64,4 +64,9 @@ class Listing
       )
     end
   end
+
+  def self.dates(listing_id:)
+    self.find_by_id(listing_id: listing_id).dates
+  end
+
 end
