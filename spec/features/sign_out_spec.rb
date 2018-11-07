@@ -1,10 +1,7 @@
 feature do
 
   before do
-    visit'/sign_up'
-    fill_in 'email', with: "fakeemail@mail.com"
-    fill_in 'password', with: "fakepassword"
-    click_button 'sign up'
+    sign_up_generic_user
   end
 
   it 'has a sign out button' do

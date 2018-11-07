@@ -5,6 +5,16 @@ def sign_up_generic_user
   click_button 'sign up'
 end
 
+def log_in_generic_user(correct_email = true, correct_password = true)
+  email = correct_email ? "fakeemail@mail.com" : "wrongemail@mail.com"
+  password = correct_password ? "fakepassword" : "wrongpassword"
+  click_button('log in')
+  fill_in 'email', with: email
+  fill_in 'password', with: password
+  click_button('log in')
+end
+
+
 def create_new_generic_listing
   click_button 'create new listing'
   fill_in 'name', with: "Beckas mansion"

@@ -7,10 +7,7 @@ feature do
   end
 
   it "signs up a user" do
-    visit '/sign_up'
-    fill_in 'email', with: "fakeemail@mail.com"
-    fill_in 'password', with: "fakepassword"
-    click_button 'sign up'
+    sign_up_generic_user
     expect(page).to have_content "Welcome to MakersBnB: fakeemail@mail.com"
   end
 
@@ -21,25 +18,16 @@ feature do
   end
 
   it "doesn't see sign in button if already signed in" do
-    visit '/sign_up'
-    fill_in 'email', with: "fakeemail@mail.com"
-    fill_in 'password', with: "fakepassword"
-    click_button 'sign up'
+    sign_up_generic_user
     expect(page).to have_button 'sign out'
     expect(page).not_to have_button 'sign up'
 
   end
 
   it "does not sign up a user if email is already taken" do
-    visit '/sign_up'
-    fill_in 'email', with: "fakeemail@mail.com"
-    fill_in 'password', with: "fakepassword"
-    click_button 'sign up'
+    sign_up_generic_user
     click_button 'sign out'
-    visit '/sign_up'
-    fill_in 'email', with: "fakeemail@mail.com"
-    fill_in 'password', with: "fakepassword"
-    click_button 'sign up'
+    sign_up_generic_user
     expect(page).to have_content 'email is already taken!'
   end
 
