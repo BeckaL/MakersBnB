@@ -1,44 +1,93 @@
-MVP:
+# MakersBnB
 
-- A web app that links to database to store users and listings.
-- User stories 1-4 required for MVP
+BnB listing and booking app built with Ruby, Sinatra, PostgreSQL
 
-User Story 1:
+## User Stories
 
-- A user can sign up
+```
+As a user
+So I can use the site
+I want to be able to sign up
 
-User Story 2:
+As a returning user
+So I can use the site again
+I want to be able to log in
 
-- A host can list a new space
-- A list has a name, description and a price
+As a user
+So no one else can use my account
+I want to be able to log out
 
-User Story 3:
+As a user
+So I can have guests in my space
+I want to be able to create a listing
 
-- A host can list multiple spaces
+As a host
+So I can advertise my listing how I like
+I want to be able to give the listing a name, description, and price
 
-User Story 4:
+As a user
+So I can choose where to stay
+I want to be able to view all listings
 
-- A guest can view listings
+As a host
+So I can control when my space can be used
+I want to say what dates my listing is available
 
-User Story 5:
+As a guest
+So I can stay for one night
+I want to be able to request a listing for one night
 
-- A host should be able to offer a range of dates where their space is available
+As a host
+So I can make decisions about my space
+I want to be able to approve a request to stay
 
-User Story 6:
+As a guest
+So I can plan my stay
+I want to know when a listing is unavailable
 
-- A guest should be able to request to hire a space for one night
+As a guest
+So I can know my stay has been approved
+I want to be able to confirm my booking after the host has approved my initial request
 
-User Story 7:
+```
 
-- A host should be able to approve a request to stay
+## Domain Model (to do - this is a placeholder!)
+![domain model](./public/images/diagram.png)
 
-User Story 8:
+## How to use
 
-- A guest should be not be able to book when the space is unavailable
+### To set up the project
 
-User Story 9:
+Clone this repository and then run:
 
-- A guest needs to confirm a booking request to validate booking
+```
+$ bundle
+```
 
-- A user can sign in
-- A user can sign out
+### To set up the database
+
+Run the Rakefile:
+
+```
+$ rake setup
+```
+
+### To run the MakersBnB app:
+
+```
+$ ruby app.rb
+```
+
+To view the app in a browser, navigate to `localhost` followed by the port (default is `4567`), e.g. `localhost:4567`.
+
+### To run tests:
+
+```
+rspec
+```
+
+### To run linting:
+
+```
+rubocop
+```
