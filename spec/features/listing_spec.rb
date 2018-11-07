@@ -18,7 +18,7 @@ feature do
 
   it 'creates two listings' do
     create_new_generic_listing
-    create_new_listing("An MP's second home", "Happily bought on taxpayer dollar", '5000')
+    create_new_listing("An MP's second home", "Happily bought on taxpayer dollar", '5000', '2019-01-01')
 
     expect(page).to have_content "Beckas mansion"
     expect(page).to have_content "An MP's second home"
