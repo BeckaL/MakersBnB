@@ -1,5 +1,7 @@
 <%= erb :html_head %>
 <%= erb :navbar_partial %>
+<%= flash[:notice] %>
+
 <ul>
   <% @listings.each do |listing| %>
     <li>

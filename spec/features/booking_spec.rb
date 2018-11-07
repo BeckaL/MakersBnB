@@ -5,11 +5,13 @@ feature "Booking a space" do
     create_new_generic_listing
   end
 
-  it "has a booking page" do
+  it 'takes a booking for an available date' do
     click_link "Beckas mansion"
     click_link "request to book"
-    expect(page).to have_field "date"
-    expect(page).to have_button "submit"
+    select "2019-01-01", :from => "available dates"
+    click_button 'submit'
+    expect(page).to have_content 'booking request sent'
   end
+
 
 end
