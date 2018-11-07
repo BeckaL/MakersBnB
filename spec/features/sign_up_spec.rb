@@ -20,7 +20,7 @@ feature do
     expect(page).not_to have_button 'sign out'
   end
 
-  it "doesn't see sign in buttonif already signed in" do
+  it "doesn't see sign in button if already signed in" do
     visit '/sign_up'
     fill_in 'email', with: "fakeemail@mail.com"
     fill_in 'password', with: "fakepassword"

@@ -18,11 +18,11 @@ describe 'user' do
     expect(User.add(email: "jack@hotmail.com", password: "password")).to eq "jack@hotmail.com"
   end
 
-  # it 'can not add a user if the email is already datebase' do
-  #   pending
-  #
-  #   expect { User.add(email: "fakeemail@hotmail.com", password: "notarealpassword")}.to raise_error "email taken!"
-  # end
+  it 'can not add a user if the email is already datebase' do
+    pending
+
+    expect { User.add(email: "fakeemail@hotmail.com", password: "notarealpassword")}.to raise_error "email taken!"
+  end
 
   it 'can log in a user with the correct email and password' do
     expect(User.sign_in(email: "fakeemail@hotmail.com", password: "notarealpassword")).to eq true
@@ -33,7 +33,7 @@ describe 'user' do
   end
 
   it 'does not log in if email is incorrect'  do
-    expect(User.sign_in(email: "realmail@hotmail.com", password: "notarealpassword")).to eq false  
+    expect(User.sign_in(email: "realmail@hotmail.com", password: "notarealpassword")).to eq false
   end
 
 end

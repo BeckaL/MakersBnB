@@ -34,6 +34,7 @@ class MakersBnB < Sinatra::Base
       session[:current_user] = email
       redirect('/')
     else
+      redirect '/log_in'
     end
   end
 
