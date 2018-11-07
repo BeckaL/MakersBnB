@@ -15,11 +15,31 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/sign_up' do
-    session[:current_user] = params["email"]
     password = params["password"]
     email = params["email"]
-    User.add(email: email, password: password)
-    redirect('/')
+    valid_sign_in = User.add(email: email, password: password)
+    if valid_sign_in == nil
+      redirect '/sign_up'
+    else
+      session[:current_user] = email
+      redirect('/')
+    end
+  end
+
+  get '/log_in' do
+    erb :log_in
+  end
+
+  post '/log_in' do
+    password = params["password"]
+    email = params["email"]
+    authentication = User.sign_in(email: email, password: password)
+    if authentication
+      session[:current_user] = email
+      redirect('/')
+    else
+      redirect '/log_in'
+    end
   end
 
   post '/sign_out' do
