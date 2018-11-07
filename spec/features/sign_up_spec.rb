@@ -40,7 +40,7 @@ feature do
     fill_in 'email', with: "fakeemail@mail.com"
     fill_in 'password', with: "fakepassword"
     click_button 'submit'
-    expect(page).to have_field 'email'
+    expect(page).to have_content 'email is already taken!'
   end
 
 end

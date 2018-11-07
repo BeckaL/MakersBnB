@@ -11,6 +11,7 @@ require 'rspec'
 require 'rake'
 require './app'
 require './spec/features/web_helpers'
+# require 'sinatra-flash'
 
 ENV['RACK_ENV'] = 'test'
 

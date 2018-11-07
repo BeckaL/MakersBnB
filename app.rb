@@ -1,9 +1,11 @@
 require 'sinatra/base'
 require './lib/user'
 require './lib/listing'
+require 'sinatra/flash'
 
 class MakersBnB < Sinatra::Base
   enable :sessions
+  register Sinatra::Flash
 
   get '/' do
     @user = session[:current_user]
@@ -19,6 +21,7 @@ class MakersBnB < Sinatra::Base
     email = params["email"]
     valid_sign_in = User.add(email: email, password: password)
     if valid_sign_in == nil
+      flash[:notice] = "email is already taken!"
       redirect '/sign_up'
     else
       session[:current_user] = email
