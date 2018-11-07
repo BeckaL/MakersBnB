@@ -18,7 +18,7 @@ feature do
     fill_in 'email', with: "fakeemail@mail.com"
     fill_in 'password', with: "fakepasswor"
     click_button('submit')
-    expect(page).to have_field 'email'
+    expect(page).to have_content 'email or password is incorrect'
   end
 
   it 'does not log in a user when the email is incorrect' do
@@ -26,7 +26,7 @@ feature do
     fill_in 'email', with: "fakeemil@mail.com"
     fill_in 'password', with: "fakepassword"
     click_button('submit')
-    expect(page).to have_field 'email'
+    expect(page).to have_content 'email or password is incorrect'
   end
 
 end

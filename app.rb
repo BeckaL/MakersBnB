@@ -41,6 +41,7 @@ class MakersBnB < Sinatra::Base
       session[:current_user] = email
       redirect('/')
     else
+      flash[:notice] = "email or password is incorrect"
       redirect '/log_in'
     end
   end
