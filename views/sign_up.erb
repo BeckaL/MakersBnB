@@ -1,4 +1,7 @@
+<%= erb :html_head %>
+<%= erb :navbar_partial %>
 <%= flash[:notice] %>
+
 <form action="/sign_up" method="post">
   <input type="email" name="email" placeholder="your email here">
   <input type="password" name="password" placeholder="your password here">

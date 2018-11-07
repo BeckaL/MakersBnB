@@ -74,6 +74,15 @@ class MakersBnB < Sinatra::Base
     erb :individual_listing
   end
 
+  get '/listings/:listing_id/book' do
+    @listing = Listing.find_by_id(listing_id: params[:listing_id])
+    erb :book
+  end
+
+  post '/listings/:listing_id/book' do
+    redirect '/listings'
+  end
+
   run! if app_file == $0
 
 end
