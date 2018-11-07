@@ -61,7 +61,6 @@ class Listing
         description: description,
         price: listing['price'].to_f,
         dates: listing['dates'].delete("{}").split(",")
-
       )
     end
   end
