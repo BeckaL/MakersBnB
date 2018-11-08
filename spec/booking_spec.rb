@@ -49,10 +49,12 @@ describe 'Booking' do
     listing_id = connection.query("SELECT listing_id FROM listings WHERE name = 'listing+1';").first['listing_id']
     Booking.create(guest_id: guest_id, host_id: host_id, listing_id: listing_id, date: '2019-01-01')
     result = Booking.select_by_host(host_id).first
-    p result
+
     expect(result.guest_id).to eq guest_id.to_i
     expect(result.host_id).to eq host_id.to_i
     expect(result.listing_id).to eq listing_id.to_i
     expect(result.date).to eq '2019-01-01'
   end
+
+  
 end

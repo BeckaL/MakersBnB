@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require './lib/user'
 require './lib/listing'
+require './lib/booking'
 require 'sinatra/flash'
 
 class MakersBnB < Sinatra::Base
@@ -87,6 +88,10 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/booking_requests' do
+
+    @requests = Booking.select_by_host(session[:current_user])
+    p @requests
+     p session[:current_user]
     erb :booking_requests
   end
 

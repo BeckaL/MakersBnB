@@ -32,9 +32,14 @@ class Booking
     end
   end
 
-  def self.select_by_host(host_id)
+  def self.select_by_host(host_email)
+    DatabaseConnection.setup
+    host_id = DatabaseConnection.query("SELECT user_id FROM users WHERE email = '#{host_email}'").first["user_id"].to_i
+    p 'what is', host_id
     booking_requests = self.all
-    booking_requests.select do |booking|
+    p 'booking requests is', booking_requests
+    booking_requests.each do |booking|
+      p "host id from booking is", booking.host_id
       booking.host_id == host_id.to_i
     end
   end

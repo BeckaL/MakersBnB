@@ -1,1 +1,12 @@
-<p>here are your booking requests</p>
+<%= erb :html_head %>
+<%= erb :navbar_partial %>
+<%= flash[:notice] %>
+
+<ul>
+  <% @requests.each do |request| %>
+    <li>
+        <%= request.date%>
+      </a>
+    </li>
+  <% end %>
+</ul>
