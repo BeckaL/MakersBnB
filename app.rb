@@ -67,6 +67,7 @@ class MakersBnB < Sinatra::Base
 
   get '/listings' do
     @listings = Listing.all
+    @user = session[:current_user]
     erb :listings
   end
 
@@ -82,7 +83,6 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/listings/:listing_id/book' do
-    p params
     flash[:notice] = "booking request sent"
     redirect '/listings'
   end
