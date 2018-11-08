@@ -2,13 +2,14 @@ require 'sinatra/base'
 require './lib/user'
 require './lib/listing'
 require 'sinatra/flash'
+require './lib/helper_methods'
 
 class MakersBnB < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
+  include HelperMethods
 
   get '/' do
-    @user = session[:current_user]
     erb :index
   end
 
@@ -20,12 +21,12 @@ class MakersBnB < Sinatra::Base
     password = params["password"]
     email = params["email"]
     valid_sign_in = User.add(email: email, password: password)
-    if valid_sign_in == nil
+    if !valid_sign_in
       flash[:notice] = "email is already taken!"
       redirect '/sign_up'
     else
       session[:current_user] = email
-      redirect('/')
+      redirect '/'
     end
   end
 
@@ -39,7 +40,7 @@ class MakersBnB < Sinatra::Base
     authentication = User.sign_in(email: email, password: password)
     if authentication
       session[:current_user] = email
-      redirect('/')
+      redirect '/'
     else
       flash[:notice] = "email or password is incorrect"
       redirect '/log_in'
@@ -57,15 +58,11 @@ class MakersBnB < Sinatra::Base
 
   post '/new_listing' do
     user = session[:current_user]
-    name = params["name"]
-    description = params["description"]
-    price = params["price"]
-    dates = params["dates"]
-    digit_regex = /\d{4}-\d{2}-\d{2}/
-    if digit_regex.match(dates)
+    name, description, price, dates = params["name"], params["description"], params["price"], params["dates"]
+    if is_date_valid?(dates)
       dates = dates.split("\r\n")
       Listing.create(user: user, name: name, description: description, price: price, dates: dates)
-      redirect('/listings')
+      redirect '/listings'
     else
       flash[:notice] = 'please use YYYY-MM-DD format for dates'
       redirect '/new_listing'
@@ -74,13 +71,11 @@ class MakersBnB < Sinatra::Base
 
   get '/listings' do
     @listings = Listing.all
-    @user = session[:current_user]
     erb :listings
   end
 
   get '/listings/:listing_id' do
     @listing = Listing.find_by_id(listing_id: params[:listing_id])
-    @user = session[:current_user]
     erb :individual_listing
   end
 
@@ -96,5 +91,4 @@ class MakersBnB < Sinatra::Base
   end
 
   run! if app_file == $0
-
 end

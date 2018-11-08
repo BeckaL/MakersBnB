@@ -5,19 +5,16 @@
 
 <% if session[:current_user] %>
 <form action="/sign_out" method="post">
-  <input type = "submit" name="sign out" value = "sign out">
+  <input type="submit" name="sign out" value="sign out">
 </form>
 <form action="/new_listing" method="get">
-  <input type = "submit" name="create new listing" value = "create new listing">
+  <input type="submit" name="create new listing" value="create new listing">
 </form>
 <% else %>
 <form action="/sign_up" method="get">
-  <input type = "submit" value = "sign up">
+  <input type="submit" value="sign up">
 </form>
 <form action="/log_in" method="get">
-  <input type = "submit" value = "log in">
+  <input type="submit" value="log in">
 </form>
 <% end %>
-<!-- <form action="/sign_out" method="post">
-  <input type = "submit" name="sign out" value = "sign out">
-</form> -->

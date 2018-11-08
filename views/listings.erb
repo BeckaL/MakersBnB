@@ -11,8 +11,8 @@
     </li>
   <% end %>
 </ul>
-<% if @user %>
+<% if session[:current_user] %>
   <form action="/new_listing" method="get">
-    <input type = "submit" name="create new listing" value = "create new listing">
+    <input type="submit" name="create new listing" value="create new listing">
   </form>
 <% end %>
