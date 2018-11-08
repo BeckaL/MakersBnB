@@ -34,6 +34,14 @@ feature do
       expect(page).to have_content "An MP's second home"
     end
 
+    it "shows the listing page" do
+      create_new_generic_listing
+      click_link "Beckas mansion"
+      expect(page).to have_content "Beckas mansion"
+      expect(page).to have_content "Ostentatiously big house"
+      expect(page).to have_content "1000"
+    end
+
   end
 
 end
