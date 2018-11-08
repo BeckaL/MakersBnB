@@ -32,4 +32,11 @@ class Booking
     end
   end
 
+  def self.select_by_host(host_id)
+    booking_requests = self.all
+    booking_requests.select do |booking|
+      booking.host_id == host_id.to_i
+    end
+  end
+
 end
