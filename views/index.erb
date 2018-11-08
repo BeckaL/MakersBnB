@@ -1,9 +1,9 @@
 <%= erb :html_head %>
 <%= erb :navbar_partial %>
 
-<p>Welcome to MakersBnB: <%= @user %></p>
+<p>Welcome to MakersBnB: <%= session[:current_user] %></p>
 
-<% if @user %>
+<% if session[:current_user] %>
 <form action="/sign_out" method="post">
   <input type = "submit" name="sign out" value = "sign out">
 </form>

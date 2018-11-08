@@ -73,6 +73,7 @@ class MakersBnB < Sinatra::Base
 
   get '/listings/:listing_id' do
     @listing = Listing.find_by_id(listing_id: params[:listing_id])
+    @user = session[:current_user]
     erb :individual_listing
   end
 

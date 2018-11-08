@@ -7,6 +7,10 @@ textarea {
   resize: none;
 }
 
+#prompt-to-login {
+  font-size: x-small;
+}
+
 #logo-title {
   color: #fc5c63;
   font-size: xx-large;

@@ -3,5 +3,16 @@
 <a href="/listings">Listings</a>
 &nbsp;
 &nbsp;
+&nbsp;
+&nbsp;
 <a href="/sign_up">Sign Up</a>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+<a href="/log_in">Log In</a>
+<br>
+<% if !session[:current_user] %>
+  <span style="font-size: small; color: gray;"><em>To create listings or make a booking, sign up or log in</em></span>
+<% end %>
 <hr>
