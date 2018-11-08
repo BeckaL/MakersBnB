@@ -42,6 +42,11 @@ feature do
       expect(page).to have_content "1000"
     end
 
+    it "does not let user create a listing when date is formatted incorrectly" do
+      create_new_listing('Beckas mansion', 'Ostentatiously big house', '1000', '1st January 2019')
+      expect(page).to have_content "please use YYYY-MM-DD format for dates"
+    end
+
   end
 
 end

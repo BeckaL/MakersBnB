@@ -60,9 +60,16 @@ class MakersBnB < Sinatra::Base
     name = params["name"]
     description = params["description"]
     price = params["price"]
-    dates = params["dates"].split("\r\n")
-    Listing.create(user: user, name: name, description: description, price: price, dates: dates)
-    redirect('/listings')
+    dates = params["dates"]
+    digit_regex = /\d{4}-\d{2}-\d{2}/
+    if digit_regex.match(dates)
+      dates = dates.split("\r\n")
+      Listing.create(user: user, name: name, description: description, price: price, dates: dates)
+      redirect('/listings')
+    else
+      flash[:notice] = 'please use YYYY-MM-DD format for dates'
+      redirect '/new_listing'
+    end
   end
 
   get '/listings' do
