@@ -69,4 +69,9 @@ class Listing
     self.find_by_id(listing_id: listing_id).dates
   end
 
+  def self.delete(listing_id:)
+    DatabaseConnection.setup
+    result = DatabaseConnection.query("DELETE FROM listings WHERE listing_id = '#{listing_id}'")
+  end
+
 end

@@ -24,4 +24,15 @@ class User
     data['password'] == password
   end
 
+  def self.find_by_id(user_id:)
+    users = User.all
+    @found_user = nil
+    users.each do |user|
+      if user.user_id == user_id.to_i
+        @found_user = user
+      end
+    end
+    @found_user.email
+  end
+
 end

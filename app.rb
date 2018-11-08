@@ -76,6 +76,7 @@ class MakersBnB < Sinatra::Base
 
   get '/listings/:listing_id' do
     @listing = Listing.find_by_id(listing_id: params[:listing_id])
+    @user_email = User.find_by_id(user_id: @listing.user_id)
     erb :individual_listing
   end
 
@@ -87,6 +88,12 @@ class MakersBnB < Sinatra::Base
 
   post '/listings/:listing_id/book' do
     flash[:notice] = "booking request sent"
+    redirect '/listings'
+  end
+
+  post '/listings/:listing_id/delete' do
+    Listing.delete(listing_id: params[:listing_id])
+    flash[:notice] = "listing deleted"
     redirect '/listings'
   end
 

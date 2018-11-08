@@ -47,6 +47,13 @@ feature do
       expect(page).to have_content "please use YYYY-MM-DD format for dates"
     end
 
+    it "can delete a listing of the user signed in" do
+      create_new_generic_listing
+      click_link "Beckas mansion"
+      click_link "delete listing"
+      expect(page).to have_content "listing deleted"
+    end
+
   end
 
 end
