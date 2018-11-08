@@ -29,7 +29,6 @@ feature "Booking a space" do
     log_in_generic_user
     click_link 'Booking Requests'
     expect(page).to have_content "here are your booking requests"
-
   end
 
 end
