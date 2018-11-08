@@ -10,10 +10,6 @@ describe 'Booking' do
     Listing.create(user: 'fakeemail@email.com', name: 'listing 1', description: 'big house', price: '100', dates: ['2019-01-01', '2019-01-05'])
     listing_id = connection.query("SELECT listing_id FROM listings WHERE name = 'listing+1';").first['listing_id']
     Booking.create(guest_email: guest_email, listing_id: listing_id, date: '2019-01-01')
-
-    listing_id = connection.query("SELECT listing_id FROM listings WHERE name = 'listing+1';").first['listing_id']
-    Booking.create(guest_email: guest_email,listing_id: listing_id, date: '2019-01-01')
-
     result = connection.query('SELECT * FROM bookings')
 
     expect(result[0]['booking_id'].to_i).to be > 0
