@@ -84,7 +84,7 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/listings/:listing_id/book' do
-    Booking.create(guest_email: session[:current_user], listing_id: params[:listing_id].to_i, date: params["available_dates"])
+    Booking.create(guest_email: session[:current_user], listing_id: params[:listing_id].to_i, date: params["available dates"])
     flash[:notice] = "booking request sent"
     redirect '/listings'
   end
@@ -92,7 +92,6 @@ class MakersBnB < Sinatra::Base
   get '/booking_requests' do
 
     @requests = Booking.select_by_host(session[:current_user])
-     p session[:current_user]
     erb :booking_requests
   end
 

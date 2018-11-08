@@ -12,6 +12,7 @@ feature "Booking a space" do
     click_button 'submit'
     expect(page).to have_content 'booking request sent'
   end
+
   it "host can see booking request of their listing" do
     visit('/')
     click_button 'sign out'
