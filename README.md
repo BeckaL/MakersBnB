@@ -51,7 +51,7 @@ I want to be able to confirm my booking after the host has approved my initial r
 
 ```
 
-## Domain Model (to do - this is a placeholder!)
+## Domain Model
 ![domain model](./public/images/diagram2.png)
 
 ## How to use
