@@ -4,11 +4,11 @@
 <%= @listing.description %>
 <%= @listing.price %>
 <% @listing.dates.each do |date| %>
-  <%= date %>
+<%= date %>
 <% end %>
 <% if session[:current_user] %>
-  <a href="/listings/<%= @listing.listing_id  %>/book">request to book</a>
+<a href="/listings/<%= @listing.listing_id  %>/book">request to book</a>
 <% end %>
 <% if session[:current_user] == @user_email %>
-  <a href="/listings/<%= @listing.listing_id %>/delete">delete listing</a>
+<a href="/listings/<%= @listing.listing_id %>/delete">delete listing</a>
 <% end %>

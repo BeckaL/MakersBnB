@@ -26,9 +26,6 @@ class Listing
 
   def self.create(user:, name:, description:, price:, dates:)
     DatabaseConnection.setup
-    # cleaning the user input to avoid some SQL problems,
-    # remember to CGI.unescape when reading back from
-    # the database in self.all
     name_string = CGI.escape(name)
     description_string = CGI.escape(description)
     price.gsub!(/[£$]/, "")

@@ -4,15 +4,15 @@
 
 <ul style="list-style: none;">
   <% @listings.each do |listing| %>
-    <li>
-      <a href="/listings/<%= listing.listing_id %>">
-        <%= listing.name %>
-      </a>
-    </li>
+  <li>
+    <a href="/listings/<%= listing.listing_id %>">
+      <%= listing.name %>
+    </a>
+  </li>
   <% end %>
 </ul>
 <% if session[:current_user] %>
-  <form action="/new_listing" method="get">
-    <input type="submit" name="create new listing" value="create new listing">
-  </form>
+<form action="/new_listing" method="get">
+  <input type="submit" name="create new listing" value="create new listing">
+</form>
 <% end %>
