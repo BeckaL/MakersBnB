@@ -14,7 +14,6 @@ def log_in_generic_user(correct_email = true, correct_password = true)
   click_button('log in')
 end
 
-
 def create_new_generic_listing
   click_button 'create new listing'
   fill_in 'name', with: "Beckas mansion"

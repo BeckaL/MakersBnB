@@ -12,7 +12,7 @@ describe DatabaseConnection do
     it 'execute query via PG' do
       connection = DatabaseConnection.setup
       expect(connection).to receive(:exec).with("SELECT * FROM listings;")
-      DatabaseConnection.query( "SELECT * FROM listings;")
+      DatabaseConnection.query("SELECT * FROM listings;") 
     end
   end
 

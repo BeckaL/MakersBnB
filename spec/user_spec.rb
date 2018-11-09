@@ -31,7 +31,7 @@ describe 'user' do
     expect(User.sign_in(email: "fakeemail@hotmail.com", password: "isarealpassword")).to eq false
   end
 
-  it 'does not log in if email is incorrect'  do
+  it 'does not log in if email is incorrect' do
     expect(User.sign_in(email: "realmail@hotmail.com", password: "notarealpassword")).to eq false
   end
 

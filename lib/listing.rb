@@ -31,9 +31,12 @@ class Listing
     price.gsub!(/[£$]/, "")
     dates_string = "{" + dates.join(", ") + "}"
 
-    result = DatabaseConnection.query("INSERT INTO listings(user_id, name, description, price, dates)
-    VALUES ((SELECT user_id FROM users WHERE email = '#{user}'),'#{name_string}','#{description_string}','#{price}', '#{dates_string}')
-    RETURNING listing_id, user_id, name, description, price, dates")
+    result = DatabaseConnection.query("INSERT INTO listings
+      (user_id, name, description, price, dates)
+      VALUES ((SELECT user_id FROM users
+      WHERE email = '#{user}'),'#{name_string}',
+      '#{description_string}','#{price}', '#{dates_string}')
+      RETURNING listing_id, user_id, name, description, price, dates")
 
     listing_id = result.first["listing_id"].to_i
     user_id = result.first["user_id"].to_i
@@ -42,7 +45,8 @@ class Listing
     price = result.first["price"].to_f
     dates = result.first["dates"].delete("{}").split(", ")
 
-    Listing.new(listing_id: listing_id, user_id: user_id, name: name, description: description, price: price, dates: dates)
+    Listing.new(listing_id: listing_id, user_id: user_id, name: name,
+      description: description, price: price, dates: dates)
   end
 
   def self.all
@@ -63,12 +67,13 @@ class Listing
   end
 
   def self.dates(listing_id:)
-    self.find_by_id(listing_id: listing_id).dates
+    find_by_id(listing_id: listing_id).dates
   end
 
   def self.delete(listing_id:)
     DatabaseConnection.setup
-    result = DatabaseConnection.query("DELETE FROM listings WHERE listing_id = '#{listing_id}'")
+    DatabaseConnection.query("DELETE FROM listings
+      WHERE listing_id = '#{listing_id}'")
   end
 
 end

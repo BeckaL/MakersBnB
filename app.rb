@@ -60,10 +60,12 @@ class MakersBnB < Sinatra::Base
 
   post '/new_listing' do
     user = session[:current_user]
-    name, description, price, dates = params["name"], params["description"], params["price"], params["dates"]
-    if is_date_valid?(dates)
+    name, description, price, dates = params["name"], params["description"],
+    params["price"], params["dates"]
+    if date_valid?(dates)
       dates = dates.split("\r\n")
-      Listing.create(user: user, name: name, description: description, price: price, dates: dates)
+      Listing.create(user: user, name: name, description: description,
+      price: price, dates: dates)
       redirect '/listings'
     else
       flash[:notice] = 'please use YYYY-MM-DD format for dates'
@@ -89,7 +91,8 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/listings/:listing_id/book' do
-    Booking.create(guest_email: session[:current_user], listing_id: params[:listing_id].to_i, date: params["available dates"])
+    Booking.create(guest_email: session[:current_user],
+    listing_id: params[:listing_id].to_i, date: params["available dates"])
     flash[:notice] = "booking request sent"
     redirect '/listings'
   end

@@ -1,7 +1,5 @@
-
 require 'simplecov'
 require 'simplecov-console'
-
 require 'capybara/rspec'
 require 'pg'
 require 'simplecov'
@@ -11,7 +9,6 @@ require 'rspec'
 require 'rake'
 require './app'
 require './spec/features/web_helpers'
-# require 'sinatra-flash'
 
 ENV['RACK_ENV'] = 'test'
 
@@ -24,7 +21,6 @@ RSpec.configure do |config|
     # Clear the database
     connection.exec("TRUNCATE listings, users, bookings;")
 
-
     # Add the test data
     connection.exec("INSERT INTO users (email, password) VALUES('test@test.com', 'password');")
   end
@@ -33,4 +29,4 @@ end
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console
   ])
-  SimpleCov.start
+SimpleCov.start
