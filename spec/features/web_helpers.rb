@@ -5,6 +5,13 @@ def sign_up_generic_user
   click_button 'sign up'
 end
 
+def sign_up_user(email, password)
+  visit '/sign_up'
+  fill_in 'email', with: email
+  fill_in 'password', with: password
+  click_button 'sign up'
+end
+
 def log_in_generic_user(correct_email = true, correct_password = true)
   email = correct_email ? "fakeemail@mail.com" : "wrongemail@mail.com"
   password = correct_password ? "fakepassword" : "wrongpassword"
@@ -29,5 +36,13 @@ def create_new_listing(name, description, price, dates)
   fill_in 'description', with: description
   fill_in 'price', with: price
   fill_in 'dates', with: dates
+  click_button 'submit'
+end
+
+def request_book_generic_listing
+  click_link 'Listings'
+  click_link "Beckas mansion"
+  click_link "request to book"
+  select "2019-01-01", :from => "available dates"
   click_button 'submit'
 end

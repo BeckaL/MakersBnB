@@ -10,6 +10,7 @@ feature do
 
   it 'sign out button signs a user out' do
     click_button "sign out"
+    
     expect(page).to have_content "Welcome to MakersBnB"
     expect(page).not_to have_content "fakeemail@mail.com"
   end
