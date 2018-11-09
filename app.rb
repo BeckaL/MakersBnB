@@ -91,7 +91,7 @@ class MakersBnB < Sinatra::Base
     redirect '/listings'
   end
 
-  post '/listings/:listing_id/delete' do
+  get '/listings/:listing_id/delete' do
     Listing.delete(listing_id: params[:listing_id])
     flash[:notice] = "listing deleted"
     redirect '/listings'
