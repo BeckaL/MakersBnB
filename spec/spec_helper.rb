@@ -22,7 +22,7 @@ RSpec.configure do |config|
     connection = PG.connect(dbname: 'makers_bnb_test')
 
     # Clear the database
-    connection.exec("TRUNCATE listings, users;")
+    connection.exec("TRUNCATE listings, users, bookings;")
 
 
     # Add the test data

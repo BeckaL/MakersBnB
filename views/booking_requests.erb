@@ -1,0 +1,9 @@
+<%= erb :html_head %>
+<%= erb :navbar_partial %>
+<%= flash[:notice] %>
+
+  <% @requests.each do |request| %>
+
+    <p><%= request["guest_email"]%> requested to book <%= request["listing_name"]%> on <%= request["date"]%></p>
+
+  <% end %>
