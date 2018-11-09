@@ -1,11 +1,25 @@
-<%= erb :html_head %>
-<%= erb :navbar_partial %>
-<%= flash[:notice] %>
-<form action="/new_listing" method="post">
-  <input name="name" placeholder="the name of your property">
-  <input name="description" placeholder="paint a picture: what's great about your place?">
-  <input name="price" placeholder="price per night">
-  <textarea rows="4" cols="10" name="dates" placeholder="yyyy-mm-dd">
-  </textarea>
-  <input type="submit" name="submit" value="submit">
-</form>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+  <body class='landing'>
+
+    <div class="container">
+
+        <%= erb :html_head %>
+        <%= erb :navbar_partial %>
+
+        <form id="listing_form" action="/new_listing" method="post">
+          <input name="name" placeholder="the name of your property">
+          <input name="description" placeholder="paint a picture: what's great about your place?">
+          <input name="price" placeholder="price per night">
+          <textarea rows="4" cols="10" name="dates" placeholder="yyyy-mm-dd">
+          </textarea>
+          <input type="submit" name="submit" value="submit">
+        </form>
+        <%= flash[:notice] %>
+
+    </div>
+  </body>
+</html>

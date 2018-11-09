@@ -1,20 +1,33 @@
-<%= erb :html_head %>
-<%= erb :navbar_partial %>
 
-<p>Welcome to MakersBnB: <%= session[:current_user] %></p>
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  </head>
+  <body class='landing'>
 
-<% if session[:current_user] %>
-<form action="/sign_out" method="post">
-  <input type="submit" name="sign out" value="sign out">
-</form>
-<form action="/new_listing" method="get">
-  <input type="submit" name="create new listing" value="create new listing">
-</form>
-<% else %>
-<form action="/sign_up" method="get">
-  <input type="submit" value="sign up">
-</form>
-<form action="/log_in" method="get">
-  <input type="submit" value="log in">
-</form>
-<% end %>
+    <div class="container">
+      <%= erb :html_head %>
+      <%= erb :navbar_partial %>
+      <div class="client_buttons">
+        <p>Welcome to MakersBnB: <%= session[:current_user] %></p>
+
+        <% if session[:current_user] %>
+        <form id="sign_up_form" action="/sign_out" method="post">
+          <input type="submit" name="sign out" value="sign out">
+        </form>
+        <form action="/new_listing" method="get">
+          <input type="submit" name="create new listing" value="create new listing">
+        </form>
+        <% else %>
+        <form action="/sign_up" method="get">
+          <input id="signup_right" type="submit" value="sign up">
+        </form>
+        <form action="/log_in" method="get">
+          <input id="login_left" type="submit" value="log in">
+        </form>
+
+      <% end %>
+
+   </div>
+  </body>
+</html>

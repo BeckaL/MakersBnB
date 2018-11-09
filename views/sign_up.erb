@@ -1,9 +1,22 @@
-<%= erb :html_head %>
-<%= erb :navbar_partial %>
-<%= flash[:notice] %>
 
-<form action="/sign_up" method="post">
-  <input type="email" name="email" placeholder="your email here">
-  <input type="password" name="password" placeholder="your password here">
-  <input type="submit" value="sign up">
-</form>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+  <body class='landing'>
+
+    <div class="container">
+
+      <%= erb :html_head %>
+      <%= erb :navbar_partial %>
+
+      <form id="sign_up_form" action="/sign_up" method="post">
+        <p>Email:</p><input type="email" name="email" placeholder="email"><br>
+        <p>Password:</p><input type="password" name="password" placeholder="password"><br>
+        <input type="submit" value="sign up">
+      </form>
+        <%= flash[:notice] %>
+
+    </div>
+  </body>
+</html>

@@ -1,10 +1,23 @@
-<%= erb :html_head %>
-<%= erb :navbar_partial %>
-<form action="/listings/<%= @listing.listing_id %>/book" method="post">
-  <select name="available dates">
-    <% @dates.each do |date| %>
-    <option value='<%= date %>'><%= date %></option>
-    <%end%>
-  </select>
-  <input type="submit" name="submit" value="submit">
-</form>
+
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  </head>
+  <body class='landing'>
+
+    <div class="container">
+
+      <%= erb :html_head %>
+      <%= erb :navbar_partial %>
+      <form action="/listings/<%= @listing.listing_id %>/book" method="post">
+        <select name="available dates">
+          <% @dates.each do |date| %>
+          <option value='<%= date %>'><%= date %></option>
+          <%end%>
+        </select>
+        <input type="submit" name="submit" value="submit">
+      </form>
+
+    </div>
+  </body>
+</html>

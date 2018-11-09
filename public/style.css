@@ -2,6 +2,59 @@ body {
   font-family: 'Gill Sans', sans-serif;
   text-align: center;
 }
+.nav_link{
+  color: #71c2ea;
+}
+
+.landing {
+  background-image: url("https://www.aishine.com/wp-content/uploads/sites/202/2018/06/lamp-wifi-camera-1.jpg");
+  /* https://www.freegreatpicture.com/files/109/22295-hd-photo-bedroom.jpg */
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+.container {
+  background-image: linear-gradient(to bottom, rgb(16, 16, 16), rgba(255, 255, 255, 0));
+  position:absolute;
+  color: #fff;
+  left:0; right:0;
+  top:0;
+  margin:auto;
+  padding: 50px;
+  padding-bottom: 20px;
+  max-width:80%;
+  max-height: inherit;
+}
+/*
+span em {
+  font-size: small;
+    color: #fff;
+}
+
+#login_left {
+  float: left;
+}
+
+#signup_right {
+  float: right;
+}
+
+.client_buttons {
+  margin-top: 100px;
+} */
+
+ #sign_up_form, #sign_in_form, #listing_form{
+  margin-top: 200px;
+ }
+/*
+input{
+  margin-bottom: 20px;
+  font-size: 1em;
+}
+
+form p {
+  display: inline-block;
+  margin-right: 10px;
+}
 
 textarea {
   resize: none;
@@ -11,15 +64,22 @@ textarea {
   font-size: x-small;
 }
 
+#n_logo {
+color: #fff;
+}
+
 #logo-title {
   color: #fc5c63;
   font-size: xx-large;
 }
-
-a {
+a{
   text-decoration: none;
 }
 
-a:visited {
-  color: inherit;
+a.nav_link2 {
+  color: #fff;
+}
+
+ a.nav_link2:hover {
+  color: #fc5c63;
 }

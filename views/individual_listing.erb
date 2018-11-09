@@ -1,11 +1,24 @@
-<%= erb :html_head %>
-<%= erb :navbar_partial %>
-<%= @listing.name %>
-<%= @listing.description %>
-<%= @listing.price %>
-<% @listing.dates.each do |date| %>
-  <%= date %>
-<% end %>
-<% if session[:current_user] %>
-  <a href="/listings/<%= @listing.listing_id  %>/book">request to book</a>
-<% end %>
+
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  </head>
+  <body class='landing'>
+
+    <div class="container">
+      
+      <%= erb :html_head %>
+      <%= erb :navbar_partial %>
+      <%= @listing.name %>
+      <%= @listing.description %>
+      <%= @listing.price %>
+      <% @listing.dates.each do |date| %>
+        <%= date %>
+      <% end %>
+      <% if session[:current_user] %>
+        <a href="/listings/<%= @listing.listing_id  %>/book">request to book</a>
+      <% end %>
+
+    </div>
+  </body>
+</html>
