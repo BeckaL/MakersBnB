@@ -3,7 +3,7 @@ body {
   text-align: center;
   background-color: #eee;
   min-width: 500px;
-
+  margin: 0;
 }
 
 input.button {
@@ -19,7 +19,7 @@ input.button {
   text-transform: capitalize;
 }
 
-#create-new-listing-button {
+input.create-new-listing-button {
   width: 150px;
 }
 
@@ -27,20 +27,19 @@ input.button {
 #navbar {
   background-color: #f7f7f7;
   opacity: 0.9;
+  margin-bottom: 16px;
+  padding-bottom: 5px;
 }
 
 #main {
   background-color: #f7f7f7;
-  min-height: 600px;
+  min-height: 700px;
   opacity: 0.9;
 }
 
 #container {
-  max-width: 800px;
-  padding: 0 10% 10% 10%;
-  background-image: url("/images/background.jpg");
-  background-size: contain;
-
+  padding: 0 20% 10% 20%;
+  background-image: url("/images/background2.jpg");
   background-repeat: no-repeat;
 }
 
