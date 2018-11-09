@@ -20,12 +20,6 @@ class User
 
   def self.all
     DatabaseConnection.setup
-    data = DatabaseConnection.query("SELECT email FROM users")
-    data.map { |user| user['email'] }
-  end
-
-  def self.all_with_id
-    DatabaseConnection.setup
     result = DatabaseConnection.query("SELECT * FROM users")
     result.map do |user|
       user_id = user['user_id']
@@ -45,7 +39,7 @@ class User
   end
 
   def self.find_by_id(user_id:)
-    users = User.all_with_id
+    users = User.all
     @found_user = nil
     users.each do |user|
       if user.user_id.to_i == user_id
