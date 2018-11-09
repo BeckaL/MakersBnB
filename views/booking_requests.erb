@@ -2,12 +2,8 @@
 <%= erb :navbar_partial %>
 <%= flash[:notice] %>
 
-<ul>
   <% @requests.each do |request| %>
-    <li>
-        <%= request["date"]%>
-        <%= request["guest_email"]%>
-        <%= request["listing_name"]%>
-    </li>
+
+    <p><%= request["guest_email"]%> requested to book <%= request["listing_name"]%> on <%= request["date"]%></p>
+
   <% end %>
-</ul>

@@ -51,6 +51,8 @@ class Booking
     return requests
   end
 
+  private
+
   def self.convert_user_id(id)
     DatabaseConnection.setup
     guest_email = DatabaseConnection.query("SELECT email FROM users WHERE user_id = '#{id}'").first["email"]
