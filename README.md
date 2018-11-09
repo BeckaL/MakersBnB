@@ -37,6 +37,11 @@ As a guest
 So I can stay for one night
 I want to be able to request a listing for one night
 
+```
+
+## Future User Stories
+
+```
 As a host
 So I can make decisions about my space
 I want to be able to approve a request to stay
@@ -91,3 +96,8 @@ rspec
 ```
 rubocop
 ```
+
+## Future updates
+
+1. Implement remaining user stories
+2. Improve CSS styling
