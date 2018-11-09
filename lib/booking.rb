@@ -40,8 +40,26 @@ class Booking
     booking_requests.select! do |booking|
       booking.host_id == host_id.to_i
     end
-    booking_requests
+    requests = []
+    booking_requests.each do |booking|
+      info = {}
+      info['guest_email'] = convert_user_id(booking.guest_id)
+      info['listing_name'] = convert_listing_id(booking.listing_id)
+      info['date'] = booking.date
+      requests << info
+    end
+    return requests
   end
 
+  def self.convert_user_id(id)
+    DatabaseConnection.setup
+    guest_email = DatabaseConnection.query("SELECT email FROM users WHERE user_id = '#{id}'").first["email"]
+  end
+
+  def self.convert_listing_id(list_id)
+    DatabaseConnection.setup
+    listing_name = DatabaseConnection.query("SELECT name FROM listings WHERE listing_id = '#{list_id}'").first["name"]
+    CGI.unescape(listing_name)
+  end
 
 end

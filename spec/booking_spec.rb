@@ -51,10 +51,9 @@ describe 'Booking' do
 
     result = Booking.select_by_host('host@gmail.com').first
 
-    expect(result.guest_id).to eq guest_id.to_i
-    expect(result.host_id).to eq host_id.to_i
-    expect(result.listing_id).to eq listing_id.to_i
-    expect(result.date).to eq '2019-01-01'
+    expect(result["guest_email"]).to eq guest_email
+    expect(result["listing_name"]).to eq "listing 1"
+    expect(result["date"]).to eq '2019-01-01'
   end
 
 

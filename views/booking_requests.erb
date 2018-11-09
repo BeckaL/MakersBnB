@@ -5,8 +5,9 @@
 <ul>
   <% @requests.each do |request| %>
     <li>
-        <%= request.date%>
-      </a>
+        <%= request["date"]%>
+        <%= request["guest_email"]%>
+        <%= request["listing_name"]%>
     </li>
   <% end %>
 </ul>
