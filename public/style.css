@@ -1,6 +1,43 @@
 body {
   font-family: 'Gill Sans', sans-serif;
   text-align: center;
+  background-color: #eee;
+  min-width: 500px;
+
+}
+
+input.button {
+  margin: 1em;
+  padding: 0.5em;
+  background-color: #fc979c;
+  color: white;
+  border-radius: 5px;
+  height: 25px;
+  width: 75px;
+  font-weight: 600;
+  letter-spacing: 0px;
+  text-transform: capitalize;
+}
+
+#create-new-listing-button {
+  width: 150px;
+}
+
+
+#navbar {
+  background-color: #f7f7f7;
+}
+
+#main {
+  background-color: #f7f7f7;
+  min-height: 400px;
+}
+
+#container {
+  max-width: 800px;
+  padding: 0 10% 10% 10%;
+  background-color: white;
+  min-height: 400px;
 }
 
 textarea {
