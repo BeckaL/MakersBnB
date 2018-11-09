@@ -26,18 +26,22 @@ input.button {
 
 #navbar {
   background-color: #f7f7f7;
+  opacity: 0.9;
 }
 
 #main {
   background-color: #f7f7f7;
-  min-height: 400px;
+  min-height: 600px;
+  opacity: 0.9;
 }
 
 #container {
   max-width: 800px;
   padding: 0 10% 10% 10%;
-  background-color: white;
-  min-height: 400px;
+  background-image: url("/images/background.jpg");
+  background-size: contain;
+
+  background-repeat: no-repeat;
 }
 
 textarea {
